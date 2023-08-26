@@ -1,7 +1,6 @@
 class ListsController < ApplicationController
   def new
-    # Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する。
-    @list = List.new
+    @list = List.new  # Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する。
   end
 
   def create
@@ -9,6 +8,7 @@ class ListsController < ApplicationController
     if @list.save
       redirect_to list_path(@list.id)
     else
+      @lists = List.all
       render :new
     end
   end
